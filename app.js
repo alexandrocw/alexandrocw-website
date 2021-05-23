@@ -10,7 +10,6 @@ const path = require('path');
 
 // For app to use assets folder
 app.use("/public", express.static(path.join(__dirname + "/public")));
-app.use("/views", express.static)
 
 // GET response
 app.get("/", (req, res) => {
