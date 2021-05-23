@@ -1,0 +1,30 @@
+{
+  "name": "alexandrocw",
+  "version": "1.0.0",
+  "description": "Website for Alex",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandrocw/alexandrocw-website.git"
+  },
+  "keywords": [
+    "Website",
+    "nodejs",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Alexandro Christian Wijaya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexandrocw/alexandrocw-website/issues"
+  },
+  "homepage": "https://github.com/alexandrocw/alexandrocw-website#readme"
+}
