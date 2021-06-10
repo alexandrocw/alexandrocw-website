@@ -1,32 +1,62 @@
 body {
-    background: linear-gradient(90deg, hsl(236, 50%, 15%), hsl(236, 80%, 50%));
-  }
-  
-  .nav {
-    background: linear-gradient(90deg, hsl(236, 98%, 10%), hsl(236, 98%, 36%));
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    box-shadow: 0 2px 0 rgb(0 0 0 / 40%);
-  }
-  
-  .nav-list a {
-    text-decoration: none;
-    display: block;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: white;
-    font-size: 1.2rem;
-  }
-  
-  .nav-list a:hover {
-    background-color: hsl(236, 98%, 5%);
-  }
-  
-  .nav-list {
-    list-style: none;
-    display: flex;
-  }
+  padding-top: 60px;
+  background: linear-gradient(90deg, hsl(236, 50%, 15%), hsl(236, 80%, 50%));
+}
+
+main {
+  top: 55px;
+}
+
+.nav {
+  background: linear-gradient(90deg, hsl(236, 98%, 10%), hsl(236, 98%, 36%));
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: flex-end;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 40%);
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.nav-list li {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-list a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.nav-list li:hover {
+  background-color: hsl(236, 98%, 5%);
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#about-me {
+  height: 100vh;
+  color: white;
+  text-align: center;
+  font-size: 5em;
+}
