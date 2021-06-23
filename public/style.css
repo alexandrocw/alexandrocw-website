@@ -7,12 +7,20 @@ main {
   margin-top: 55px;
 }
 
+
+/* Navbar
+***********/
+
 #navbar {
   background-color: hsl(236, 50%, 15%);
 }
 
+/* Main Content
+****************/
+
 #homepage {
   color: white;
+  height: 100vh;
 }
 
 #homepage > h1 {
@@ -22,6 +30,14 @@ main {
 
 #homepage > h4 {
   font-family: Poppins;
+}
+
+.header-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-content  h1 {
@@ -36,8 +52,6 @@ main {
   text-shadow: 1px 1px #333;
 }
 
-/* Navbar
-***********/
 
 /* Section 1
 *************/
@@ -49,4 +63,19 @@ main {
   color: white;
   text-align: center;
   font-size: 2em;
+}
+
+/* Media Queries
+******************/
+
+@media (max-width: 768px) {
+  .navbar-default {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-default {
+    display: block !important;
+  }
 }

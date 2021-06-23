@@ -1,0 +1,34 @@
+body {
+  background: linear-gradient(0deg, hsl(235, 62%, 42%), hsl(236, 95%, 83%));
+}
+
+main {
+  position: relative;
+  margin-top: 55px;
+}
+
+
+/* Navbar
+***********/
+
+#navbar {
+  background-color: hsl(236, 50%, 15%);
+}
+
+/* Main Content
+****************/
+
+/* Media Queries
+******************/
+
+@media (max-width: 768px) {
+    .navbar-default {
+      display: none !important;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .navbar-default {
+      display: block !important;
+    }
+  }
