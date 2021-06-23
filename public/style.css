@@ -4,7 +4,7 @@ body {
 
 main {
   position: relative;
-  top: 55px;
+  margin-top: 55px;
 }
 
 #navbar {
