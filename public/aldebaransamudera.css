@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(0deg, hsl(235, 62%, 42%), hsl(236, 95%, 83%));
+  background: linear-gradient(30deg, hsl(235, 62%, 42%), hsl(236, 95%, 83%));
 }
 
 main {
@@ -17,6 +17,47 @@ main {
 
 /* Main Content
 ****************/
+
+#homepage {
+  color: white;
+  height: 100vh;
+}
+
+#homepage > h1 {
+  font-family: Poppins;
+  font-size: 2em;
+}
+
+#homepage > h2 {
+  font-family: Poppins;
+  color: white;
+}
+
+#homepage > p {
+  font-size: 2em;
+  color: white;
+}
+
+.header-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-content  h1 {
+  color: #fff;
+  font-size: 70px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px #000;
+}
+.header-content h4 {
+color: #fff;
+font-size: 25px;
+text-shadow: 1px 1px #333;
+}
+
 
 /* Media Queries
 ******************/
