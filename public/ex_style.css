@@ -1,12 +1,11 @@
 body {
-  background: linear-gradient(30deg, hsl(235, 62%, 42%), hsl(236, 95%, 83%));
+  background: linear-gradient(90deg, hsl(236, 50%, 15%), hsl(236, 80%, 50%));
 }
 
 main {
   position: relative;
   margin-top: 55px;
 }
-
 
 /* Navbar
 ***********/
@@ -28,14 +27,8 @@ main {
   font-size: 2em;
 }
 
-#homepage > h2 {
+#homepage > h4 {
   font-family: Poppins;
-  color: white;
-}
-
-#homepage > p {
-  font-size: 2em;
-  color: white;
 }
 
 .header-content {
@@ -53,23 +46,35 @@ main {
   text-shadow: 2px 2px #000;
 }
 .header-content h4 {
-color: #fff;
-font-size: 25px;
-text-shadow: 1px 1px #333;
+  color: #fff;
+  font-size: 25px;
+  text-shadow: 1px 1px #333;
 }
 
+
+/* Section 1
+*************/
+#about-me {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  font-size: 2em;
+}
 
 /* Media Queries
 ******************/
 
 @media (max-width: 768px) {
-    .navbar-default {
-      display: none !important;
-    }
+  .navbar-default {
+    display: none !important;
   }
-  
-  @media (min-width: 768px) {
-    .navbar-default {
-      display: block !important;
-    }
+}
+
+@media (min-width: 768px) {
+  .navbar-default {
+    display: block !important;
   }
+}
