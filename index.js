@@ -11,6 +11,7 @@ const path = require('path');
 // For app to use assets folder
 app.use("/public", express.static(path.join(__dirname + "/public")));
 app.use("/assets", express.static(path.join(__dirname + "/assets")));
+app.use("/js", express.static(path.join(__dirname + "/js")));
 
 // GET response
 app.get("/", (req, res) => {
