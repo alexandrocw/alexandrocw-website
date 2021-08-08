@@ -445,6 +445,11 @@ p {
     color: white;
 }
 
+#projects .project-info a {
+    color: white;
+    font-size: 2.2rem;
+}
+
 #projects .project-img {
     flex-basis: 50%;
     height: 300px;
