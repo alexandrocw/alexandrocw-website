@@ -446,8 +446,8 @@ p {
 }
 
 #projects .project-info a {
-    color: white;
-    font-size: 2.2rem;
+    color: crimson;
+    font-size: 1.8rem;
 }
 
 #projects .project-img {
