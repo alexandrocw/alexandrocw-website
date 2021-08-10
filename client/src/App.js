@@ -5,7 +5,7 @@ import { Route, Link } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" render={() => {window.location.href="/pages/Homepage/index.html"}} />
+      <Route exact path="/" render={() => {window.location.href="../public/pages/Homepage/index.html"}} />
     </div>
   );
 }
