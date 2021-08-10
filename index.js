@@ -1,28 +1,5 @@
-// Initialize dotenv environment
-require('dotenv').config();
+require('dotenv').config(); // Load environtment variables from .env file
 
-
-// Import required frameworks and modules
-const express = require('express');
-const app = express();
-const config = require('./config');
-const path = require('path');
-
-// For app to use assets folder
-app.use("/public", express.static(path.join(__dirname + "/public")));
-app.use("/assets", express.static(path.join(__dirname + "/assets")));
-app.use("/js", express.static(path.join(__dirname + "/js")));
-
-// GET response
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname + "/views/index.html"));
-});
-
-app.get("/aldebaransamudera", (req, res) => {
-    res.sendFile(path.join(__dirname + "/views/aldebaransamudera.html"));
-});
-
-// Listen to port
-app.listen(config.PORT, () => {
-    console.log(`Listening on PORT ${config.PORT}`);
-});
+const Server = require('./models/server');
+const server = new Server();
+server.listen();
