@@ -34,7 +34,7 @@ class Home extends React.Component {
                     </div>
                 </div>
                 </section>
-                {'{'}/* End Header */{'}'}
+                {/* End Header */}
                 {/* Hero Section */}
                 <section id="hero">
                 <div classname="hero container">
@@ -46,7 +46,7 @@ class Home extends React.Component {
                     </div>
                 </div>
                 </section>
-                {/* Hero Section */}
+                {/* End Hero Section */}
                 {/* Services Section */}
                 <section id="services">
                 <div classname="services container">
