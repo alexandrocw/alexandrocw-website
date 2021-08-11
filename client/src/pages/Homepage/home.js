@@ -210,6 +210,7 @@ class Home extends React.Component {
                 </div>
                 </section>
                 {/* End Footer */}
+                <script src="./index.js"></script>
             </div>
         )
     }
