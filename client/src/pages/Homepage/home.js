@@ -10,6 +10,10 @@ class Home extends React.Component {
         document.body.appendChild(script);
     }
 
+    scriptLoader() {
+        window.A.sort();
+    }
+
     render() {
         require("./home.css");
         return (
