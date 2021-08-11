@@ -10,7 +10,7 @@ class Home extends React.Component {
         document.body.appendChild(script);
     }
 
-    scriptLoader() {
+    scriptLoaded() {
         window.A.sort();
     }
 
