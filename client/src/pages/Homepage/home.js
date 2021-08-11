@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 class Home extends React.Component {
-    componentDidMount() {
-        const script = document.createElement("script");
-        script.async = true;
-        script.src = "./index.js";
-        script.onload = () => this.scriptLoaded();
-
-        document.body.appendChild(script);
+    constructor(props) {
+        super(props);
     }
 
-    scriptLoaded() {
-        window.A.sort();
+    componentDidMount() {
+        const script = document.createElement("script");
+
+        script.type = "text/javascript";
+        script.async = true;
+        script.src = "./index.js";
+        document.body.appendChild(script);
     }
 
     render() {
