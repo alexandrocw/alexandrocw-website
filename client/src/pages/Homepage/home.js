@@ -1,6 +1,15 @@
 import React from "react";
 
 class Home extends React.Component {
+    componentDidMount() {
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = "./index.js";
+        script.onload = () => this.scriptLoaded();
+
+        document.body.appendChild(script);
+    }
+
     render() {
         require("./home.css");
         return (
@@ -210,7 +219,6 @@ class Home extends React.Component {
                 </div>
                 </section>
                 {/* End Footer */}
-                <script src="./index.js"></script>
             </div>
         )
     }
