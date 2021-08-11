@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
+import Project_Image from "../../assets/img-1.png"
+import Self_Image from "../../assets/Self_Potrait.png"
+import Self_CV from "../../assets/files/CV_Alexandro Christian Wijaya.pdf"
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
         const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
@@ -107,25 +106,25 @@ class Home extends React.Component {
                     </div>
                     <div className="service-bottom">
                     <div className="service-item">
-                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" />
+                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" alt="" />
                         </div>
                         <h2>Front-End Web Development</h2>
                         <p>I'm capable of using HTML5, CSS, Javascript, ReactJS, and SASS to realize your design.</p>
                     </div>
                     <div className="service-item">
-                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" />
+                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" alt="" />
                         </div>
                         <h2>Back-End Web Development</h2>
                         <p>I can make your back-end or improve it with Django or ExpressJS</p>
                     </div>
                     <div className="service-item">
-                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" />
+                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" alt="" />
                         </div>
                         <h2>Data Science</h2>
                         <p>From collecting data, data preprocessing, data training, modelling, and testing&amp;evaluation. I can give you those services.</p>
                     </div>
                     <div className="service-item">
-                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" />
+                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" alt="" />
                         </div>
                         <h2>Data Analytic</h2>
                         <p>I can scrape data from Google Analytics and other website for analyzing trends and etc.</p>
@@ -150,7 +149,7 @@ class Home extends React.Component {
                         <a href="https://github.com/alexandrocw/" target="_blank">Here</a>
                         </div>
                         <div className="project-img">
-                        <img src="../../assets/img-1.png" alt="img" />
+                        <img src={Project_Image} alt="img" />
                         </div>
                     </div>
                     <div className="project-item">
@@ -161,7 +160,7 @@ class Home extends React.Component {
                         <a href="https://alex-website-playground.herokuapp.com/" target="_blank">Here</a>
                         </div>
                         <div className="project-img">
-                        <img src="../../assets/img-1.png" alt="img" />
+                        <img src={Project_Image} alt="img" />
                         </div>
                     </div>
                     <div className="project-item">
@@ -172,7 +171,7 @@ class Home extends React.Component {
                         <a href="https://codepen.io/lkingdgl/pens/public" target="_blank">Here</a>
                         </div>
                         <div className="project-img">
-                        <img src="../../assets/img-1.png" alt="img" />
+                        <img src={Project_Image} alt="img" />
                         </div>
                     </div>
                     <div className="project-item">
@@ -183,7 +182,7 @@ class Home extends React.Component {
                         <a href="https://www.kaggle.com/alexandrocw" target="_blank">Here</a>
                         </div>
                         <div className="project-img">
-                        <img src="../../assets/img-1.png" alt="img" />
+                        <img src={Project_Image} alt="img" />
                         </div>
                     </div>
                     <div className="project-item">
@@ -194,7 +193,7 @@ class Home extends React.Component {
                         <a href="https://github.com/alexandrocw/CP-training" target="_blank">Here</a>
                         </div>
                         <div className="project-img">
-                        <img src="../../assets/img-1.png" alt="img" />
+                        <img src={Project_Image} alt="img" />
                         </div>
                     </div>
                     </div>
@@ -206,14 +205,14 @@ class Home extends React.Component {
                 <div className="about container">
                     <div className="col-left">
                     <div className="about-img">
-                        <img src="../../assets/Self_Potrait.png" alt="Alex" />
+                        <img src={Self_Image} alt="Alex" />
                     </div>
                     </div>
                     <div className="col-right">
                     <h1 className="section-title">About <span>Me</span></h1>
                     <h2>Full Stack Web Developer</h2>
                     <p>I'm an Electrical Engineering Undergraduate Student. I have big enthusiast towards technology, web development, and data science. I'm very easy going and can be contacted easily. Honesty and high-self esteem are my principles. </p>
-                    <a href="../../assets/files/CV_Alexandro Christian Wijaya.pdf" download className="cta">Download Resume</a>
+                    <a href={Self_CV} download className="cta">Download Resume</a>
                     </div>
                 </div>
                 </section>
@@ -226,21 +225,21 @@ class Home extends React.Component {
                     </div>
                     <div className="contact-items">
                     <div className="contact-item">
-                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" alt="" /></div>
                         <div className="contact-info">
                         <h1>Phone</h1>
                         <h2>+62 8232 587 4231</h2>
                         </div>
                     </div>
                     <div className="contact-item">
-                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" alt="" /></div>
                         <div className="contact-info">
                         <h1>Email</h1>
                         <h2>alexandrowijaya.aw2@gmail.com</h2>
                         </div>
                     </div>
                     <div className="contact-item">
-                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+                        <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" alt="" /></div>
                         <div className="contact-info">
                         <h1>Address</h1>
                         <h2>Temanggung, Jawa Tengah, Indonesia</h2>
