@@ -1,8 +1,8 @@
 import React from "react";
-import "./style.css";
 
 class Home extends React.Component {
     render() {
+        require("./home.css");
         return (
             <div>
                 {/* Header */}
