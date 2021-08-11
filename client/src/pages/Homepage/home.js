@@ -7,10 +7,9 @@ class Home extends React.Component {
 
     componentDidMount() {
         const script = document.createElement("script");
-
-        script.type = "text/javascript";
-        script.async = true;
+        
         script.src = "./index.js";
+        script.async = true;
         document.body.appendChild(script);
     }
 
