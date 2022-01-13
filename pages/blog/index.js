@@ -22,7 +22,7 @@ const BlogPage = ({ posts }) => {
     <div>
       Hey this is blog
       {posts.map((post) => (
-        <div>
+        <div key={post._id}>
           {post.title}
           {post.author_name}
           {post.published_on.toString()}

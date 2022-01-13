@@ -30,7 +30,7 @@ const Home = ({ posts }) => {
         <div>
           <h3>Latest blog post</h3>
           {posts.map((post) => (
-            <div>
+            <div key={post._id}>
               {post.title}
               Published on {post.published_on}
             </div>
