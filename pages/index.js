@@ -23,7 +23,7 @@ const Home = ({ posts }) => {
         <h1 className="text-8xl text-center">Welcome<br/>Visitor...</h1>
       </div>
       <div className="m-auto mr-4 w-1/2 rounded-lg border-2 p-4">
-        <h2 className="text-center border-2">What's going on?</h2>
+        <h2 className="text-center border-2">What&apos;s going on?</h2>
         <div className="">
           <h3>Latest project</h3>
         </div>
