@@ -1,7 +1,12 @@
 {
   "name": "alexandrocw-website",
-  "version": "0.1.0",
+  "version": "4.0.0",
   "private": true,
+  "description": "Alex's Personal Website",
+  "main": "./pages/index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,5 +21,23 @@
   "devDependencies": {
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.8"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandrocw/alexandrocw-website.git"
+  },
+  "keywords": [
+    "Website",
+    "nodejs",
+    "javascript",
+    "html",
+    "css",
+    "expressjs"
+  ],
+  "author": "Alexandro Christian Wijaya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexandrocw/alexandrocw-website/issues"
+  },
+  "homepage": "https://github.com/alexandrocw/alexandrocw-website#readme"
 }
