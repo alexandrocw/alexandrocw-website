@@ -19,6 +19,12 @@ const BlogSchema = new mongoose.Schema({
     type: Date,
     required: [true, "Please provide publishing time"]
   },
+  updated_on: {
+    /* Time the post was updated */
+
+    type: Date,
+    required: [true, "Please provide the updated time or published time"]
+  },
   category: {
     /* Category of the post */
 
