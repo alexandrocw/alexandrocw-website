@@ -35,7 +35,7 @@ const Home = ({ posts, projects }) => {
       <div className="m-auto w-auto">
         <h1 className="text-8xl text-center ease-in transition-opacity">Welcome<br/>Visitor...</h1>
       </div>
-      <div className="m-auto w-auto rounded-lg border-2 bg-black space-y-3">
+      <div className="m-auto w-auto rounded-lg border-2 bg-black space-y-3 shadow-md">
         <h2 className="text-center mt-4 text-white font-bold">What&apos;s going on?</h2>
         <div className="flex flex-col cursor-default bg-white border-2 shadow-md w-full">
           <div className="border-b-2 px-4 pt-2">

@@ -21,23 +21,29 @@ export async function getServerSideProps() {
 const BlogPage = ({ posts }) => {
   if (!posts) {
     return (
-      <div className="flex justify-center items-center flex-grow">
-        <p className="text-2xl animate-spin">Loading</p>
+      <div>
+        Loading
       </div>
     )
   }
 
   return (
-    <div>
-      Hey this is blog
+    <div className="flex flex-col">
+      <div className="font-bold text-4xl uppercase text-center my-4 space-y-4">
+        <h1>Alex&apos;s Blog</h1>
+      </div>
       {posts.map((post) => (
-        <div key={post._id}>
-          {post.title}
-          {post.author_name}
-          {post.published_on}
-          {post.updated_on}
-          {post.category}
-          {post.content}
+        <div key={post._id} className="w-2/3 m-auto border-4 shadow-lg rounded-lg text-lg p-4">
+          <div className="border-b-2">
+            <h2 className="font-bold text-3xl">{post.title}</h2>
+            <div>
+              <h2>By <span className="text-red-500">{post.author_name}</span>, published on <span className="text-red-500">{post.published_on}</span> in category <span className="text-red-500">{post.category}</span></h2>
+              <h2>Latest updated on <span className="text-red-500">{post.updated_on}</span></h2>
+            </div>
+          </div>
+          <div className="mt-4">
+            <h3>{post.content}</h3>
+          </div>
         </div>
       ))}
     </div>
