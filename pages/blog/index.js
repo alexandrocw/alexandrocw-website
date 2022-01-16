@@ -29,11 +29,11 @@ const BlogPage = ({ posts }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="font-bold text-4xl uppercase text-center my-4 space-y-4">
+      <div className="font-bold text-4xl uppercase text-center my-4 space-y-4 text-white">
         <h1>Alex&apos;s Blog</h1>
       </div>
       {posts.map((post) => (
-        <div key={post._id} className="w-2/3 m-auto border-4 shadow-lg rounded-lg text-lg p-4">
+        <div key={post._id} className="w-2/3 m-auto border-4 shadow-lg rounded-lg text-lg p-4 bg-white">
           <div className="border-b-2">
             <h2 className="font-bold text-3xl">{post.title}</h2>
             <div>

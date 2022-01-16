@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap');
 
 html, body {
-  font-family: "Oswald", Sans;
+  font-family: 'Exo', sans-serif;
+}
+
+.body-bg {
+  background: url("../public/bg.png");
 }

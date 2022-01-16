@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <div className="flex flex-col flex-grow">
+    <div className="flex flex-col flex-grow text-white">
       <div className="flex m-auto">
         <div className="m-auto">
           <Image src="/Self_Potrait.png" alt="Photo of Alex" width={300} height={400} />
