@@ -3,7 +3,7 @@ import Blog from "../models/Blog";
 import Project from "../models/Project";
 import Link from "next/link";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   await dbConnect();
 
   /* find all the data in our database */

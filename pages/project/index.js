@@ -2,7 +2,7 @@ import dbConnect from "../../lib/dbConnect.js";
 import Project from "../../models/Project.js";
 
 /* Retrieves Project(s) data from mongodb database */
-export async function getServerSideProps() {
+export async function getStaticProps() {
   await dbConnect();
 
   /* find all the data in our database */
