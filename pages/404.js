@@ -1,8 +1,17 @@
+import Head from "next/head";
+
 const NotFound = () => {
   return (
-    <div>
-      Not Found
-    </div>
+    <>
+      <Head>
+        <title>Alex's Personal Website | Page Not Found</title>
+        <meta name="keywords" content="not-found"/>
+      </Head>
+
+      <div>
+        Not Found
+      </div>
+    </>
   )
 }
 

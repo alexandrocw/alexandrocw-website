@@ -10,6 +10,10 @@ const Header = () => {
         <Link href="/project"><a className="p-2 shadow-sm hover:text-purple-500">Projects</a></Link>
         <Link href="/blog"><a className="p-2 shadow-sm hover:text-purple-500">Blog</a></Link>
         <Link href="/help-and-support"><a className="p-2 shadow-sm hover:text-purple-500">Help &amp; Support</a></Link>
+        <div className="flex justify-center items-center space-x-2">
+          <Link href="/signin"><a className="p-2 shadow-sm hover:text-purple-500">Sign In</a></Link>
+          <Link href="/signup"><a className="p-2 border-2 rounded-lg border-white bg-purple-500 shadow-sm hover:bg-purple-700">Sign Up</a></Link>
+        </div>
       </nav>
     </header>
   )
