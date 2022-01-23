@@ -4,7 +4,7 @@ const NotFound = () => {
   return (
     <>
       <Head>
-        <title>Alex's Personal Website | Page Not Found</title>
+        <title>Alex&apos;s Personal Website | Page Not Found</title>
         <meta name="keywords" content="not-found"/>
       </Head>
 

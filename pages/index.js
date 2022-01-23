@@ -40,7 +40,7 @@ const Home = ({ posts, projects }) => {
   return (
     <>
       <Head>
-        <title>Alex's Personal Website | Home</title>
+        <title>Alex&apos;s Personal Website | Home</title>
         <meta name="keywords" content="alex"/>
       </Head>
       

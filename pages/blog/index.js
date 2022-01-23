@@ -34,7 +34,7 @@ const BlogPage = ({ posts }) => {
   return (
     <>
       <Head>
-        <title>Alex's Personal Website | Blog</title>
+        <title>Alex&apos;s Personal Website | Blog</title>
         <meta name="keywords" content="blog"/>
       </Head>
 

@@ -19,7 +19,7 @@ const HelpSupport = () => {
   return (
     <>
       <Head>
-        <title>Alex's Personal Website | Help &amp; Support</title>
+        <title>Alex&apos;s Personal Website | Help &amp; Support</title>
         <meta name="keywords" content="help-and-support"/>
       </Head>
       

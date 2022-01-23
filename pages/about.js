@@ -5,7 +5,7 @@ const About = () => {
   return (
     <>
       <Head>
-        <title>Alex's Personal Website | About</title>
+        <title>Alex&apos;s Personal Website | About</title>
         <meta name="keywords" content="about-me"/>
       </Head>
       

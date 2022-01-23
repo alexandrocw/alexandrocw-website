@@ -34,7 +34,7 @@ const ProjectPage = ({ posts }) => {
   return (
     <>
       <Head>
-        <title>Alex's Personal Website | Projects</title>
+        <title>Alex&apos;s Personal Website | Projects</title>
         <meta name="keywords" content="projects"/>
       </Head>
 
