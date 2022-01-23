@@ -1,5 +1,5 @@
 import Project from "../../../models/Project.js";
-const dbConnect = require("../../lib/dbConnect.js");
+const dbConnect = require("../../../lib/dbConnect.js");
 
 const handler = async (req, res) => {
   const { method } = req;

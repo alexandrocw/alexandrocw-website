@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Blog from "../../../models/Blog.js";
-const dbConnect = require("../../../lib/dbConnect.js");
+import Blog from "../../models/Blog.js";
+const dbConnect = require("../../lib/dbConnect.js");
 
 /* Retrieves blog(s) data from mongodb database */
 export async function getStaticProps() {

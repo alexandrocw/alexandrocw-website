@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Project from "../../../models/Project.js";
-const dbConnect = require("../../../lib/dbConnect.js");
+import Project from "../../models/Project.js";
+const dbConnect = require("../../lib/dbConnect.js");
 
 /* Retrieves Project(s) data from mongodb database */
 export async function getStaticProps() {
