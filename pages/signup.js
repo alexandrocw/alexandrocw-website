@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { emailRegex } from "../lib/regex";
+const { emailRegex } = require("../lib/regex");
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");

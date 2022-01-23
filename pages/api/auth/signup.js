@@ -1,7 +1,7 @@
-import dbConnect from "../../../lib/dbConnect.js";
 import User from "../../../models/User.js";
-import { emailRegex } from "../../../lib/regex.js";
-import { hashPassword } from "../../../lib/auth.js";
+const dbConnect = require("../../../lib/dbConnect.js");
+const { emailRegex } = require("../../../lib/regex.js");
+const { hashPassword } = require("../../../lib/auth.js");
 
 const handler = async (req, res) => {
   // Only POST method is accepted

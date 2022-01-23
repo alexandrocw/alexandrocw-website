@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { getSession } from "next-auth/react";
-import { useState } from "react";
-import { emailRegex } from "../lib/regex";
+import { useEffect, useState } from "react";
+const { emailRegex } = require("../lib/regex");
 
 const Forgot = () => {
   const [email, setEmail] = useState("");

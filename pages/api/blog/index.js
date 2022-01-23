@@ -1,5 +1,5 @@
-import dbConnect from "../../../lib/dbConnect.js";
 import Blog from "../../../models/Blog.js";
+const dbConnect = require("../../lib/dbConnect.js");
 
 const handler = async (req, res) => {
   const { method } = req;

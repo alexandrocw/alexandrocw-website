@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { verifyPassword } from "../../../lib/auth.js";
-import dbConnect from "../../../lib/dbConnect.js";
 import User from "../../../models/User.js";
 import mongoose from "mongoose";
+const { verifyPassword } = require("../../../lib/auth.js");
+const dbConnect = require("../../../lib/dbConnect.js");
 
 export default NextAuth({
   session: {
