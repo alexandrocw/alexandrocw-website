@@ -36,7 +36,7 @@ const SignIn = () => {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try{
       // Check email is valid

@@ -7,8 +7,8 @@ const handler = async (req, res) => {
   // Only POST method is accepted
   if (req.method === "POST") {
     // Getting email, first name, last name, username, and password from body
-    const { email, first_name: firstName, last_name: lastName, username, password, rePassword } = req.body;
-    if (!email || !emailRegex.test(email) || !password || !rePassword || !first_name || !last_name || !username || (password !== rePassword) || !(password.length >= 8 && password.length <= 16)) {
+    const { email, firstName, lastName, username, password, rePassword } = req.body;
+    if (!email || !emailRegex.test(email) || !password || !rePassword || !firstName || !lastName || !username || (password !== rePassword) || !(password.length >= 8 && password.length <= 16)) {
       res.status(422).json({ message: "Invalid Data", error: true });
       return ;
     }
@@ -27,15 +27,16 @@ const handler = async (req, res) => {
       return ;
     }
     // Hash password
+    const hashedPassword = await hashPassword(password);
     const status = await User.create({
-      email,
-      first_name,
-      last_name,
-      username,
+      email: email,
+      first_name: firstName,
+      last_name: lastName,
+      username: username,
       joined_on: new Date(),
       status: "online",
       email_verified: false,
-      password: await hashPassword(password)
+      password: hashedPassword
     })
     // Send success response
     res.status(201).json({ message: "User created", error: false, ...status });
