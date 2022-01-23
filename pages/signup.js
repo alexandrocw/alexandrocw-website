@@ -1,16 +1,43 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { getSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { emailRegex } from "../lib/regex";
 
 const SignUp = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({ firstName: false, lastName: false, username: false, email: false, password: false, rePassword: false, status: "" });
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    getSession().then((session) => {
+      if (session) {
+        router.replace("/");
+      } else {
+        setIsLoading(false);
+      }
+    })
+  }, [router]);
 
   const handleChange = (e) => {
     switch (e.target.name) {
+      case "first-name":
+        setFirstName(e.target.value);
+        break;
+      case "last-name":
+        setLastName(e.target.value);
+        break;
+      case "username":
+        setUsername(e.target.value);
+        break;
       case "email":
         setEmail(e.target.value);
         break;
@@ -29,19 +56,113 @@ const SignUp = () => {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let form = document.getElementById("form");
     try{
-      if (form.checkValidity()) {
-        setError(false);
+      // Check first name
+      if (firstName) {
+        setError((prev) => ({
+          ...prev,
+          firstName: false
+        }))
       } else {
-        setError(true);
+        setError((prev) => ({
+          ...prev,
+          firstName: true
+        }))
+      }
+      // Check last name
+      if (lastName) {
+        setError((prev) => ({
+          ...prev,
+          lastName: false
+        }))
+      } else {
+        setError((prev) => ({
+          ...prev,
+          lastName: true
+        }))
+      }
+      // Check username
+      if (username) {
+        setError((prev) => ({
+          ...prev,
+          username: false
+        }))
+      } else {
+        setError((prev) => ({
+          ...prev,
+          username: true
+        }))
+      }
+      // Check if email valid
+      if (email && emailRegex.test(email)) {
+        setError((prev) => ({
+          ...prev,
+          email: false
+        }))
+      } else {
+        setError((prev) => ({
+          ...prev,
+          email: true
+        }))
+      }
+      // Check password
+      if (password && password.length >= 8 && password.length <= 16) {
+        setError((prev) => ({
+          ...prev,
+          password: false
+        }))
+      } else {
+        setError((prev) => ({
+          ...prev,
+          password: true
+        }))
+      }
+      // Check if rePassword match
+      if (password === rePassword) {
+        setError((prev) => ({
+          ...prev,
+          rePassword: false
+        }))
+      } else {
+        setError((prev) => ({
+          ...prev,
+          rePassword: true
+        }))
+      }
+      // Check if all values true and proceed to API
+      if (Object.values(error).every((err) => (typeof err === "boolean" && !err) || (typeof err === "string"))) {
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            username: username,
+            rePassword: rePassword
+          })
+        })
+        const data = await res.json();
+        console.log(data);
+        if (data.error) {
+          setError((prev) => ({
+            ...prev,
+            status: data.message
+          }))
+        }
       }
     } catch (error) {
       window.alert(error);
     }
-    console.log(email, password, rePassword, error);
+  }
+
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
 
   return (
@@ -52,10 +173,57 @@ const SignUp = () => {
       </Head>
 
       <div className="flex flex-col flex-grow items-center justify-center">
-        <form id="form" className="flex flex-col items-center bg-purple-200 rounded-lg border-4 border-red-300 w-1/3 h-3/5 px-4 space-y-4" onSubmit={handleSubmit}>
+        <form id="form" className="flex flex-col items-center bg-purple-200 rounded-lg border-4 border-red-300 w-2/4 px-4 space-y-4" onSubmit={handleSubmit}>
           <h1 className="text-center font-bold uppercase mt-4 text-2xl">Sign Up</h1>
           <p className="text-center">Already have an account? <Link href="/signin"><a className="text-blue-500 hover:text-blue-700 font-bold">Sign In</a></Link></p>
           <div className="flex flex-col space-y-4 w-full">
+            <div className="flex">
+              <div className="w-1/2">
+                <label htmlFor="first-name" className="sr-only">First Name</label>
+                <div>
+                  <input
+                    id="first-name"
+                    name="first-name"
+                    className={"w-full border-2 rounded-lg p-2 " + (error.firstName ? "border-red-700" : "border-black")}
+                    placeholder="First Name"
+                    type="text"
+                    onChange={handleChange}
+                    value={firstName}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="w-1/2">
+                <label htmlFor="last-name" className="sr-only">Last Name</label>
+                <div>
+                  <input
+                    id="last-name"
+                    name="last-name"
+                    className={"w-full border-2 rounded-lg p-2 " + (error.lastName ? "border-red-700" : "border-black")}
+                    placeholder="Last Name"
+                    type="text"
+                    onChange={handleChange}
+                    value={lastName}
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="w-full">
+              <label htmlFor="username" className="sr-only">Username</label>
+              <div>
+                <input
+                  id="username"
+                  name="username"
+                  className={"w-full border-2 rounded-lg p-2 " + (error.lastName ? "border-red-700" : "border-black")}
+                  placeholder="Username"
+                  type="text"
+                  onChange={handleChange}
+                  value={username}
+                  required
+                />
+              </div>
+            </div>
             <div className="w-full">
               <label htmlFor="email" className="sr-only">Email</label>
               <div>
@@ -70,6 +238,9 @@ const SignUp = () => {
                   required
                 />
               </div>
+              {error.email
+              ? <p className="text-red-700">Email not valid</p>
+              : null}
             </div>
             <div className="w-full">
               <label htmlFor="password" className="sr-only">Password</label>
@@ -78,13 +249,16 @@ const SignUp = () => {
                   id="password"
                   name="password"
                   className="w-full border-2 border-black rounded-lg p-2"
-                  placeholder="Password"
+                  placeholder="Password (8-16 characters, number, symbols)"
                   type={showPassword ? "input" : "password"}
                   onChange={handleChange}
                   value={password}
                   required
                 />
               </div>
+              {error.password
+              ? <p className="text-red-700">Password not valid</p>
+              : null}
             </div>
             <div className="w-full">
               <label htmlFor="re-password" className="sr-only">Re Enter Password</label>
@@ -100,6 +274,9 @@ const SignUp = () => {
                   required
                 />
               </div>
+              {error.rePassword
+              ? <p className="text-red-700">Password not Match</p>
+              : null}
             </div>
           </div>
           <div className="w-full">
@@ -113,7 +290,10 @@ const SignUp = () => {
             />
             <span>Show Password</span>
           </div>
-          <button type="submit" className="w-1/2 p-2 text-xl uppercase border-2 border-black rounded-lg text-white bg-purple-500 hover:bg-purple-700">Create Account</button>
+          {error.status
+          ? <p className="text-red-700">{ error.status }</p>
+          : null}
+          <button onClick={handleSubmit} className="w-1/2 p-2 text-xl uppercase border-2 border-black rounded-lg text-white bg-purple-500 hover:bg-purple-700">Create Account</button>
         </form>
       </div>
     </>

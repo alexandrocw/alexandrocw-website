@@ -1,11 +1,26 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { getSession, signIn } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { emailRegex } from "../lib/regex";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({ email: false, password: false, status: "" });
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    getSession().then((session) => {
+      if (session) {
+        router.replace("/");
+      } else {
+        setIsLoading(false);
+      }
+    })
+  }, [router]);
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -16,24 +31,59 @@ const SignIn = () => {
         setPassword(e.target.value);
         break;
       default:
-        setError(true);
+        console.error("error");
         break;
     }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let form = document.getElementById("form");
     try{
-      if (form.checkValidity()) {
-        setError(false);
+      // Check email is valid
+      if (email && emailRegex.test(email)) {
+        setError((prev) => ({
+          ...prev,
+          email: false
+        }))
       } else {
-        setError(true);
+        setError((prev) => ({
+          ...prev,
+          email: true
+        }))
+      }
+      // Check password 8-16 characters
+      if (password && password.length >= 8 && password.length <= 16) {
+        setError((prev) => ({
+          ...prev,
+          password: false
+        }))
+      } else {
+        setError((prev) => ({
+          ...prev,
+          password: true
+        }))
+      }
+      if (Object.values(error).every((err) => (typeof err === "boolean" && !err) || (typeof err === "string"))) {
+        const result = await signIn("credentials", {
+          redirect: false,
+          email: email,
+          password: password
+        })
+        if (result.error) {
+          setError((prev) => ({
+            ...prev,
+            status: result.error
+          }))
+        }
       }
     } catch (error) {
       window.alert(error);
     }
     console.log(email, password, error);
+  }
+
+  if (isLoading) {
+    return <p>Loading...</p>
   }
 
   return (
@@ -62,6 +112,9 @@ const SignIn = () => {
                   required
                 />
               </div>
+              {error.email
+              ? <p className="text-red-700">Email not valid</p>
+              : null}
             </div>
             <div className="w-full">
               <label htmlFor="password" className="sr-only">Password</label>
@@ -70,17 +123,23 @@ const SignIn = () => {
                   id="password"
                   name="password"
                   className="w-full border-2 border-black rounded-lg p-2"
-                  placeholder="Password"
+                  placeholder="Password (8-16 characters, number, symbols)"
                   type="password"
                   onChange={handleChange}
                   value={password}
                   required
                 />
               </div>
+              {error.password
+              ? <p className="text-red-700">Password not valid</p>
+              : null}
+              {error.status
+              ? <p className="text-red-700">{ error.status }</p>
+              : null}
             </div>
           </div>
           <Link href="/forgot-password"><a className="w-full text-right text-blue-500 hover:text-blue-700">Forgot your password?</a></Link>
-          <button type="submit" className="w-1/2 p-2 text-xl uppercase border-2 border-black rounded-lg text-white bg-purple-500 hover:bg-purple-700">Login</button>
+          <button onClick={handleSubmit} className="w-1/2 p-2 text-xl uppercase border-2 border-black rounded-lg text-white bg-purple-500 hover:bg-purple-700">Login</button>
         </form>
       </div>
     </>

@@ -1,10 +1,24 @@
 import Head from "next/head";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { getSession } from "next-auth/react";
 import { useState } from "react";
+import { emailRegex } from "../lib/regex";
 
 const Forgot = () => {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({ email: false, status: "" });
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    getSession().then((session) => {
+      if (session) {
+        router.replace("/");
+      } else {
+        setIsLoading(false);
+      }
+    })
+  }, [router]);
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -15,24 +29,34 @@ const Forgot = () => {
         setPassword(e.target.value);
         break;
       default:
-        setError(true);
+        console.error("error");
         break;
     }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let form = document.getElementById("form");
     try{
-      if (form.checkValidity()) {
-        setError(false);
+      // Check if email valid
+      if (email && emailRegex.test(email)) {
+        setError((prev) => ({
+          ...prev,
+          email: false
+        }))
       } else {
-        setError(true);
+        setError((prev) => ({
+          ...prev,
+          email: true
+        }))
       }
     } catch (error) {
       window.alert(error);
     }
     console.log(email, error);
+  }
+
+  if (isLoading) {
+    return <p>Loading...</p>
   }
 
   return (
@@ -61,9 +85,15 @@ const Forgot = () => {
                   required
                 />
               </div>
+              {error.email
+              ? <p className="text-red-700">Enter valid email address</p>
+              : null}
+              {error.status
+              ? <p className="text-red-700">{ error.status }</p>
+              : null}
             </div>
           </div>
-          <button type="submit" className="w-1/2 p-2 text-xl uppercase border-2 border-black rounded-lg text-white bg-purple-500 hover:bg-purple-700">Send Email</button>
+          <button onClick={handleSubmit} className="w-1/2 p-2 text-xl uppercase border-2 border-black rounded-lg text-white bg-purple-500 hover:bg-purple-700">Send Email</button>
         </form>
       </div>
     </>
