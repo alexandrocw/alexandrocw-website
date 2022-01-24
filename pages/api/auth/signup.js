@@ -36,7 +36,8 @@ const handler = async (req, res) => {
       joined_on: new Date(),
       status: "online",
       email_verified: false,
-      password: hashedPassword
+      password: hashedPassword,
+      role: "member"
     })
     // Send success response
     res.status(201).json({ message: "User created", error: false, ...status });
