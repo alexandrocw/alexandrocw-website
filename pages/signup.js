@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getSession } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
 const { emailRegex } = require("../lib/regex");
 
@@ -148,12 +148,25 @@ const SignUp = () => {
           })
         })
         const data = await res.json();
-        console.log(data);
         if (data.error) {
           setError((prev) => ({
             ...prev,
             status: data.message
           }))
+        } else {
+          const result = await signIn("credentials", {
+            redirect: false,
+            email: email,
+            password: password
+          })
+          if (result.error) {
+            setError((prev) => ({
+              ...prev,
+              status: result.error
+            }))
+          } else {
+            router.replace("/");
+          }
         }
       }
     } catch (error) {

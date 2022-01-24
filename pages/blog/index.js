@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 import Blog from "../../models/Blog.js";
 const dbConnect = require("../../lib/dbConnect.js");
 
@@ -23,6 +25,9 @@ export async function getStaticProps() {
 }
 
 const BlogPage = ({ posts }) => {
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
+
   if (!posts) {
     return (
       <div>
@@ -42,6 +47,16 @@ const BlogPage = ({ posts }) => {
         <div className="font-bold text-4xl uppercase text-center my-4 space-y-4 text-white">
           <h1>Alex&apos;s Blog</h1>
         </div>
+        {session && (session.user.role === "lead_admin") && (
+          <div className="m-auto w-2/3 mb-6">
+            <Link href="/blog/create">
+              <a className="border-2 border-black p-2 bg-white w-1/3 rounded-lg shadow-lg hover:bg-gray-300">
+                Create new post
+              </a>
+            </Link>
+          </div>
+        )}
+
         {posts.map((post) => (
           <div key={post._id} className="w-2/3 m-auto border-4 shadow-lg rounded-lg text-lg p-4 bg-white">
             <div className="border-b-2">

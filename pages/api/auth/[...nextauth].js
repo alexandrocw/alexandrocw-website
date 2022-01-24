@@ -1,11 +1,22 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "../../../models/User.js";
-import mongoose from "mongoose";
 const { verifyPassword } = require("../../../lib/auth.js");
 const dbConnect = require("../../../lib/dbConnect.js");
 
 export default NextAuth({
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.user = user;
+      }
+      return token
+    },
+    session: async ({ session, token }) => {
+      session.user = token.user;
+      return session
+    }
+  },
   session: {
     strategy: "jwt"
   },
@@ -18,7 +29,6 @@ export default NextAuth({
         });
 
         if (!user) {
-          mongoose.connection.close();
           throw new Error("No user found!");
         }
 
@@ -28,12 +38,22 @@ export default NextAuth({
         );
 
         if (!isValid) {
-          mongoose.connection.close();
           throw new Error("Could not log you in!");
         }
 
-        mongoose.connection.close();
-        return { email: user.email };
+        return {
+          id: user._id,
+          email: user.email,
+          firstName: user.first_name,
+          lastName: user.last_name,
+          username: user.username,
+          joinedOn: user.joined_on,
+          emailVerified: user.email_verified,
+          blogPosts: user.blog_posts,
+          projectPosts: user.project_posts,
+          status: user.status,
+          role: user.role
+        };
       }
     })
   ]

@@ -74,12 +74,13 @@ const SignIn = () => {
             ...prev,
             status: result.error
           }))
+        } else {
+          router.replace("/");
         }
       }
     } catch (error) {
       window.alert(error);
     }
-    console.log(email, password, error);
   }
 
   if (isLoading) {
