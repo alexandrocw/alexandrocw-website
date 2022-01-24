@@ -3,7 +3,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import User from "../../../models/User.js";
 const { verifyPassword } = require("../../../lib/auth.js");
 const dbConnect = require("../../../lib/dbConnect.js");
-require("dotenv").config();
 
 export default NextAuth({
   callbacks: {
